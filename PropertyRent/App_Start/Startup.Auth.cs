@@ -58,11 +58,11 @@ namespace PropertyRent
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = System.Configuration.ConfigurationManager.AppSettings["GoogClientID"],
+                ClientSecret = System.Configuration.ConfigurationManager.AppSettings["GoogClientSecret"]
+            });
         }
     }
 }

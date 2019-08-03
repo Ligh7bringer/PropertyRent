@@ -504,3 +504,6 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/windows,aspnetcore,visualstudio
+
+# Do not add API tokens to version control!
+AppSettingsSecrets.config

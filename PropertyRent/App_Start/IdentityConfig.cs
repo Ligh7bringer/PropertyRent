@@ -11,15 +11,21 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using PropertyRent.Models;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace PropertyRent
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            var apiKey = System.Configuration.ConfigurationManager.AppSettings["SendGridKey"];
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("admin@letting.com", "Property Letting Admin");
+            var to = new EmailAddress(message.Destination, "New user");            
+            var msg = MailHelper.CreateSingleEmail(from, to, message.Subject, String.Empty, message.Body);
+            var response = await client.SendEmailAsync(msg);
         }
     }
 
@@ -53,7 +59,7 @@ namespace PropertyRent
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = 8,
                 RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
