@@ -2,8 +2,13 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <img class="img-responsive" src="https://images.musement.com/cover/0002/11/edinburgh-skyline-scotland-fotolia-162434345-subscription-xxl-jpg_header-110058.jpeg?w=1280&h=480&q=60&fit=crop" alt="My image" />
+            <h2 class="display-3">Property Letting Ltd.</h2>
+            <p class="lead">The number one property letting agency.</p>
+            <h4 class="display-3">@Html.ActionLink("Available Properties", "About")</h4>
+        </div>
+    </div>
 </div>
