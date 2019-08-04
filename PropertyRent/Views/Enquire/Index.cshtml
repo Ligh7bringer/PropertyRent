@@ -1,39 +1,39 @@
 ﻿@model IEnumerable<PropertyRent.Models.EnquiryModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "My enquiries";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Body)
         </th>
+        <th>@Html.DisplayNameFor(model => model.Property)</th>
         <th>
             @Html.DisplayNameFor(model => model.DateSent)
         </th>
-        <th></th>
+        <th>Manage</th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateSent)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Body)
+    </td>
+    <td>
+        @Html.ActionLink(item.Property.Title, "Details", "AvailableProperties", new { id = item.Property.Id }, null)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateSent)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>

@@ -60,8 +60,11 @@ namespace PropertyRent
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = System.Configuration.ConfigurationManager.AppSettings["GoogClientID"],
-                ClientSecret = System.Configuration.ConfigurationManager.AppSettings["GoogClientSecret"]
+                //ClientId = System.Configuration.ConfigurationManager.AppSettings["GoogClientID"],
+                //ClientSecret = System.Configuration.ConfigurationManager.AppSettings["GoogClientSecret"]
+
+                ClientId = Environment.GetEnvironmentVariable("GoogClientID"),
+                ClientSecret = Environment.GetEnvironmentVariable("GoogClientSecret")
             });
         }
     }

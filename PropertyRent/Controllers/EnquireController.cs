@@ -25,6 +25,12 @@ namespace PropertyRent.Controllers
             return View(userEnquiries.ToList());
         }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult IndexAdmin()
+        {
+            return View(db.Enquiries.ToList());
+        }
+
         // GET: Enquire/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,6 +40,11 @@ namespace PropertyRent.Controllers
             }
             EnquiryModel enquiryModel = db.Enquiries.Find(id);
             if (enquiryModel == null)
+            {
+                return HttpNotFound();
+            }
+            var currentUser = User.Identity.GetUserId();
+            if (currentUser != enquiryModel.User.Id)
             {
                 return HttpNotFound();
             }
@@ -52,6 +63,9 @@ namespace PropertyRent.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.PropertyName = propertyIdentity.Title;
+            ViewBag.PropertyLocation = propertyIdentity.Location;
 
             return View();
         }
@@ -73,7 +87,11 @@ namespace PropertyRent.Controllers
 
                 db.Enquiries.Add(enquiryModel);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                TempData["Message"] = "Thank you for your interest in this property.";
+                TempData["SubMessage"] = "We will try to respond as soon as possible.";
+
+                return RedirectToAction("Info", "Account");
             }
 
             return View(enquiryModel);

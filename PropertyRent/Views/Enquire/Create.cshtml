@@ -1,30 +1,30 @@
 ﻿@model PropertyRent.Models.EnquiryModel
 
 @{
-    ViewBag.Title = "Send an Enquiry";
+    ViewBag.Title = "Send an enquiry";
 }
 
 <h2>@ViewBag.Title</h2>
+<h4>You're enquiring about:  @ViewBag.PropertyName in @ViewBag.PropertyLocation</h4>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>EnquiryModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Body, new { @placeholder = "Type your enquiry here...", @rows = 10, @cols = 1000, @style = "width: 100%;", htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
-        </div>     
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Send" class="btn btn-info" />
             </div>
         </div>
     </div>

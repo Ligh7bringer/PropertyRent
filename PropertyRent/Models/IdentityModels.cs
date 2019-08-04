@@ -51,6 +51,7 @@ namespace PropertyRent.Models
         public string Body { get; set; }
 
         [Required]
+        [Display(Name = "Sent")]
         public System.DateTime DateSent { get; set; } = System.DateTime.Now;
 
         public virtual ApplicationUser User { get; set; }

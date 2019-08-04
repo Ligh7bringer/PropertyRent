@@ -20,7 +20,8 @@ namespace PropertyRent
     {
         public async Task SendAsync(IdentityMessage message)
         {
-            var apiKey = System.Configuration.ConfigurationManager.AppSettings["SendGridKey"];
+            //var apiKey = System.Configuration.ConfigurationManager.AppSettings["SendGridKey"];
+            var apiKey = Environment.GetEnvironmentVariable("SendGridKey");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("admin@letting.com", "Property Letting Admin");
             var to = new EmailAddress(message.Destination, "New user");            
