@@ -205,9 +205,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AvailablePropertiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PropertyIdentitiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -279,11 +279,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
-    <Content Include="Views\PropertyIdentities\Create.cshtml" />
-    <Content Include="Views\PropertyIdentities\Delete.cshtml" />
-    <Content Include="Views\PropertyIdentities\Details.cshtml" />
-    <Content Include="Views\PropertyIdentities\Edit.cshtml" />
-    <Content Include="Views\PropertyIdentities\Index.cshtml" />
+    <Content Include="Views\AvailableProperties\Create.cshtml" />
+    <Content Include="Views\AvailableProperties\Delete.cshtml" />
+    <Content Include="Views\AvailableProperties\Details.cshtml" />
+    <Content Include="Views\AvailableProperties\Edit.cshtml" />
+    <Content Include="Views\AvailableProperties\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PropertyRent.Models.PropertyIdentity>
+
+@{
+    ViewBag.Title = "Available Properties";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th>
+            More Information
+        </th>
+        @if (User.IsInRole("Admin"))
+        {
+            <th>
+                Edit
+            </th>
+        }
+        </tr>
+
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        <img class="img-thumbnail" src="http://www.cams-it.com/wp-content/uploads/2015/05/default-placeholder-200x200.png" alt="Property Thumbnail">
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Location)
+    </td>
+    <td>
+        £@Html.DisplayFor(modelItem => item.Price) pm
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateCreated)
+    </td>
+
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.Id })
+    </td>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <td>
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            
+        </td>
+    }
+    </tr>    
+}
+
+</table>

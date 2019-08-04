@@ -10,17 +10,17 @@ using PropertyRent.Models;
 
 namespace PropertyRent.Controllers
 {
-    public class PropertyIdentitiesController : Controller
+    public class AvailablePropertiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: PropertyIdentities
+        // GET: AvailableProperties
         public ActionResult Index()
         {
             return View(db.Properties.ToList());
         }
 
-        // GET: PropertyIdentities/Details/5
+        // GET: AvailableProperties/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace PropertyRent.Controllers
             return View(propertyIdentity);
         }
 
-        // GET: PropertyIdentities/Create
+        // GET: AvailableProperties/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PropertyIdentities/Create
+        // POST: AvailableProperties/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace PropertyRent.Controllers
             return View(propertyIdentity);
         }
 
-        // GET: PropertyIdentities/Edit/5
+        // GET: AvailableProperties/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace PropertyRent.Controllers
             return View(propertyIdentity);
         }
 
-        // POST: PropertyIdentities/Edit/5
+        // POST: AvailableProperties/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace PropertyRent.Controllers
             return View(propertyIdentity);
         }
 
-        // GET: PropertyIdentities/Delete/5
+        // GET: AvailableProperties/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace PropertyRent.Controllers
             return View(propertyIdentity);
         }
 
-        // POST: PropertyIdentities/Delete/5
+        // POST: AvailableProperties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
