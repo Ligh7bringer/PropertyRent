@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -21,14 +22,40 @@ namespace PropertyRent.Models
 
     public class PropertyIdentity
     {
+        [Key]
         public int Id { get; set; }
+
         [Display(Name = "Property")]
+        [Required]
         public string Title { get; set; }
+
+        [Required]
         public string Location { get; set; }
+
+        [Required]
         public double Price { get; set; }
+
+        [Required]
         [Display(Name = "Added")]
         public System.DateTime DateCreated { get; set; } = System.DateTime.Now;
 
+    }
+
+    public class EnquiryModel
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [Display(Name ="Enquiry")]
+        public string Body { get; set; }
+
+        [Required]
+        public System.DateTime DateSent { get; set; } = System.DateTime.Now;
+
+        public virtual ApplicationUser User { get; set; }
+
+        public virtual PropertyIdentity Property { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -44,5 +71,6 @@ namespace PropertyRent.Models
         }
 
         public DbSet<PropertyIdentity> Properties{ get; set; }
+        public DbSet<EnquiryModel> Enquiries { get; set; }
     }
 }

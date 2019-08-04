@@ -206,6 +206,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AvailablePropertiesController.cs" />
+    <Compile Include="Controllers\EnquireController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,6 +215,50 @@
     <Compile Include="Migrations\201908041142429_InitialCreate.cs" />
     <Compile Include="Migrations\201908041142429_InitialCreate.Designer.cs">
       <DependentUpon>201908041142429_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041449400_CreateEnquiries.cs" />
+    <Compile Include="Migrations\201908041449400_CreateEnquiries.Designer.cs">
+      <DependentUpon>201908041449400_CreateEnquiries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041451187_CreateEnquiries2.cs" />
+    <Compile Include="Migrations\201908041451187_CreateEnquiries2.Designer.cs">
+      <DependentUpon>201908041451187_CreateEnquiries2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041454507_CreateEnquiries3.cs" />
+    <Compile Include="Migrations\201908041454507_CreateEnquiries3.Designer.cs">
+      <DependentUpon>201908041454507_CreateEnquiries3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041455319_CreateEnquiries4.cs" />
+    <Compile Include="Migrations\201908041455319_CreateEnquiries4.Designer.cs">
+      <DependentUpon>201908041455319_CreateEnquiries4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041545490_ForeignKeys.cs" />
+    <Compile Include="Migrations\201908041545490_ForeignKeys.Designer.cs">
+      <DependentUpon>201908041545490_ForeignKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041556594_ForeignKeysUpdate.cs" />
+    <Compile Include="Migrations\201908041556594_ForeignKeysUpdate.Designer.cs">
+      <DependentUpon>201908041556594_ForeignKeysUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041600437_ForeignKeysUpdate2.cs" />
+    <Compile Include="Migrations\201908041600437_ForeignKeysUpdate2.Designer.cs">
+      <DependentUpon>201908041600437_ForeignKeysUpdate2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041603303_ForeignKeysUpdate3.cs" />
+    <Compile Include="Migrations\201908041603303_ForeignKeysUpdate3.Designer.cs">
+      <DependentUpon>201908041603303_ForeignKeysUpdate3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041607451_ForeignKeysUpdate4.cs" />
+    <Compile Include="Migrations\201908041607451_ForeignKeysUpdate4.Designer.cs">
+      <DependentUpon>201908041607451_ForeignKeysUpdate4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041610572_Required.cs" />
+    <Compile Include="Migrations\201908041610572_Required.Designer.cs">
+      <DependentUpon>201908041610572_Required.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908041648581_Required2.cs" />
+    <Compile Include="Migrations\201908041648581_Required2.Designer.cs">
+      <DependentUpon>201908041648581_Required2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -284,6 +329,11 @@
     <Content Include="Views\AvailableProperties\Details.cshtml" />
     <Content Include="Views\AvailableProperties\Edit.cshtml" />
     <Content Include="Views\AvailableProperties\Index.cshtml" />
+    <Content Include="Views\Enquire\Create.cshtml" />
+    <Content Include="Views\Enquire\Delete.cshtml" />
+    <Content Include="Views\Enquire\Details.cshtml" />
+    <Content Include="Views\Enquire\Edit.cshtml" />
+    <Content Include="Views\Enquire\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,6 +356,39 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908041142429_InitialCreate.resx">
       <DependentUpon>201908041142429_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041449400_CreateEnquiries.resx">
+      <DependentUpon>201908041449400_CreateEnquiries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041451187_CreateEnquiries2.resx">
+      <DependentUpon>201908041451187_CreateEnquiries2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041454507_CreateEnquiries3.resx">
+      <DependentUpon>201908041454507_CreateEnquiries3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041455319_CreateEnquiries4.resx">
+      <DependentUpon>201908041455319_CreateEnquiries4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041545490_ForeignKeys.resx">
+      <DependentUpon>201908041545490_ForeignKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041556594_ForeignKeysUpdate.resx">
+      <DependentUpon>201908041556594_ForeignKeysUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041600437_ForeignKeysUpdate2.resx">
+      <DependentUpon>201908041600437_ForeignKeysUpdate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041603303_ForeignKeysUpdate3.resx">
+      <DependentUpon>201908041603303_ForeignKeysUpdate3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041607451_ForeignKeysUpdate4.resx">
+      <DependentUpon>201908041607451_ForeignKeysUpdate4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041610572_Required.resx">
+      <DependentUpon>201908041610572_Required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908041648581_Required2.resx">
+      <DependentUpon>201908041648581_Required2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
