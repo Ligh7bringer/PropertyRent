@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,7 +20,9 @@ namespace PropertyRent.Controllers
         // GET: Enquire
         public ActionResult Index()
         {
-            return View(db.Enquiries.ToList());
+            var currentUser = User.Identity.GetUserId();
+            var userEnquiries = db.Enquiries.Where(x => x.User.Id == currentUser);
+            return View(userEnquiries.ToList());
         }
 
         // GET: Enquire/Details/5
@@ -38,8 +41,18 @@ namespace PropertyRent.Controllers
         }
 
         // GET: Enquire/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PropertyIdentity propertyIdentity = db.Properties.Find(id);
+            if (propertyIdentity == null)
+            {
+                return HttpNotFound();
+            }
+
             return View();
         }
 
@@ -48,13 +61,11 @@ namespace PropertyRent.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Body,DateSent")] EnquiryModel enquiryModel)
+        public ActionResult Create(int? id, [Bind(Include = "Id,Body,DateSent")] EnquiryModel enquiryModel)
         {
             if (ModelState.IsValid)
             {
-                var users = db.Users.ToList();
-                var properties = db.Properties.ToList();
-                enquiryModel.Property = properties[0];
+                enquiryModel.Property = db.Properties.Find(id);
 
                 string userId = User.Identity.GetUserId();
                 ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
