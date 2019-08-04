@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -18,6 +19,18 @@ namespace PropertyRent.Models
         }
     }
 
+    public class PropertyIdentity
+    {
+        public int Id { get; set; }
+        [Display(Name = "Property")]
+        public string Title { get; set; }
+        public string Location { get; set; }
+        public double Price { get; set; }
+        [Display(Name = "Added")]
+        public System.DateTime DateCreated { get; set; } = System.DateTime.Now;
+
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -29,5 +42,7 @@ namespace PropertyRent.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<PropertyIdentity> Properties{ get; set; }
     }
 }
